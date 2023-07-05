@@ -2,7 +2,7 @@
 from loguru import logger
 import socket
 import libregpio as GPIO
-from time import sleep
+# from time import sleep
 import socket
 import busio
 import board
@@ -17,11 +17,13 @@ ID = config.tato_id
 
 logger.info("potato cannon launch")
 
+# sensor enviro
 i2c = busio.I2C(board.SCL1, board.SDA1)
 bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
+#sensor soil
 
-relay = GPIO.OUT('GPIOX_5')
-relay.low()
+controller_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+controller_sock.connect((HOST, PORT))
 
 while True:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
