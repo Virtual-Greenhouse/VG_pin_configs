@@ -22,8 +22,8 @@ i2c = busio.I2C(board.SCL1, board.SDA1)
 bme280 = adafruit_bme280.Adafruit_BME280_I2C(i2c)
 #sensor soil
 
-controller_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-controller_sock.connect((HOST, PORT))
+#controller_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#controller_sock.connect(("1234", 1234))
 
 while True:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
