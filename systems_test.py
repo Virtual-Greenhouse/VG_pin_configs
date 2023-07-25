@@ -10,6 +10,7 @@ fan = GPIO.OUT('GPIOX_4')
 light = GPIO.OUT('GPIOX_5')
 humidifier_pump = GPIO.OUT('GPIOX_2')
 soil_pump = GPIO.OUT('GPIOX_7')
+humidifier = GPIO.OUT('GPIOX_16')
 
 
 #interups the program
@@ -41,7 +42,8 @@ while True:
     logger.info("light is off")
     time.sleep(1.0)
 
-    #water pumps are inverse so "low" is on and "high" is off
+    #water pumps and humidifier are inverse so "low" is on and "high" is off
+    #this goes for everything connected to the mechanical relay
 
     humidifier_pump.low()
     logger.info("humidifier pump is on")
@@ -58,6 +60,15 @@ while True:
     soil_pump.high()
     logger.info("Soil pump is off")
     time.sleep(1.0)
+
+    humidifier.low()
+    logger.info("humidifier is on")
+    time.sleep(4.0)
+
+    humidifier.high()
+    logger.info("humidifier is off")
+    time.sleep(1.0)
+
 
 # Class Divices
 # F == OFF
