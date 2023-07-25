@@ -20,6 +20,7 @@ def signal_handler(sig, frame):
     light.low()
     humidifier_pump.high()
     soil_pump.high()
+    humidifier.high()
     sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
